@@ -1,8 +1,9 @@
 /* Austro Chem — marketing site (from design HTML, adapted for Next.js) */
 
 :root {
-  --nav-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Long nav morphs — high inertia, no “snap” */
+  --nav-ease: cubic-bezier(0.33, 1, 0.48, 1);
+  --ease-smooth: cubic-bezier(0.28, 0.85, 0.22, 1);
   /* Pull hero under sticky nav; must be ≥ actual nav row height to avoid paper gap */
   --hero-nav-overlap: 100px;
   --paper: #f6f8fc;
@@ -65,8 +66,8 @@
   border-bottom: none;
   box-shadow: none;
   transition:
-    top 0.55s var(--nav-ease),
-    padding 0.5s var(--nav-ease);
+    top 0.78s var(--nav-ease),
+    padding 0.72s var(--nav-ease);
 }
 
 .austro .nav-wrap::after {
@@ -85,7 +86,7 @@
   );
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.35s var(--nav-ease);
+  transition: opacity 0.55s var(--ease-smooth);
 }
 
 .austro .nav-wrap--compact {
@@ -119,13 +120,13 @@
   box-shadow: none;
   border-radius: 0;
   transition:
-    padding 0.55s var(--nav-ease),
-    gap 0.55s var(--nav-ease),
-    background 0.55s var(--ease-smooth),
-    border-radius 0.55s var(--nav-ease),
-    box-shadow 0.55s var(--nav-ease),
-    border-color 0.5s var(--nav-ease),
-    backdrop-filter 0.55s var(--ease-smooth);
+    padding 0.78s var(--nav-ease),
+    gap 0.72s var(--nav-ease),
+    background 0.82s var(--ease-smooth),
+    border-radius 0.78s var(--nav-ease),
+    box-shadow 0.82s var(--ease-smooth),
+    border-color 0.72s var(--nav-ease),
+    backdrop-filter 0.85s var(--ease-smooth);
 }
 
 .austro .nav-wrap:not(.nav-wrap--compact) .nav {
@@ -177,12 +178,13 @@
   padding: 7px 18px 7px 7px;
   margin: -4px -8px;
   transition:
-    background 0.38s var(--ease-smooth),
-    box-shadow 0.38s var(--ease-smooth),
-    gap 0.55s var(--nav-ease),
-    padding 0.55s var(--nav-ease),
-    margin 0.55s var(--nav-ease),
-    transform 0.4s var(--ease-smooth);
+    background 0.72s var(--ease-smooth),
+    box-shadow 0.72s var(--ease-smooth),
+    border-color 0.65s var(--ease-smooth),
+    gap 0.72s var(--nav-ease),
+    padding 0.72s var(--nav-ease),
+    margin 0.72s var(--nav-ease),
+    transform 0.55s var(--ease-smooth);
 }
 
 .austro .brand:hover {
@@ -234,11 +236,11 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     0 6px 16px -8px rgba(10, 26, 61, 0.45);
   transition:
-    width 0.55s var(--nav-ease),
-    height 0.55s var(--nav-ease),
-    border-radius 0.55s var(--nav-ease),
-    box-shadow 0.22s ease,
-    border-color 0.25s ease;
+    width 0.72s var(--nav-ease),
+    height 0.72s var(--nav-ease),
+    border-radius 0.72s var(--nav-ease),
+    box-shadow 0.55s var(--ease-smooth),
+    border-color 0.55s var(--ease-smooth);
 }
 
 .austro .brand-mark::after {
@@ -251,7 +253,7 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.06em;
-  transition: font-size 0.45s var(--nav-ease);
+  transition: font-size 0.65s var(--nav-ease);
 }
 
 .austro .brand-text {
@@ -269,9 +271,9 @@
   color: var(--ink-1);
   font-weight: 700;
   transition:
-    font-size 0.5s var(--nav-ease),
-    letter-spacing 0.45s var(--nav-ease),
-    color 0.2s ease;
+    font-size 0.68s var(--nav-ease),
+    letter-spacing 0.6s var(--nav-ease),
+    color 0.45s var(--ease-smooth);
 }
 
 .austro .brand-tagline {
@@ -313,10 +315,10 @@
   backdrop-filter: blur(18px) saturate(155%);
   -webkit-backdrop-filter: blur(18px) saturate(155%);
   transition:
-    background 0.5s var(--ease-smooth),
-    border-color 0.5s var(--ease-smooth),
-    box-shadow 0.55s var(--nav-ease),
-    backdrop-filter 0.55s var(--ease-smooth);
+    background 0.82s var(--ease-smooth),
+    border-color 0.75s var(--ease-smooth),
+    box-shadow 0.82s var(--ease-smooth),
+    backdrop-filter 0.88s var(--ease-smooth);
 }
 
 /* Inside mega-pill: rail is flush — no second glass capsule */
@@ -424,13 +426,13 @@
   white-space: nowrap;
   box-shadow: none;
   transition:
-    color 0.38s var(--ease-smooth),
-    background 0.38s var(--ease-smooth),
-    box-shadow 0.42s var(--ease-smooth),
-    transform 0.35s var(--ease-smooth),
-    padding 0.48s var(--nav-ease),
-    font-size 0.45s var(--nav-ease),
-    border-radius 0.45s var(--nav-ease);
+    color 0.55s var(--ease-smooth),
+    background 0.62s var(--ease-smooth),
+    box-shadow 0.65s var(--ease-smooth),
+    transform 0.5s var(--ease-smooth),
+    padding 0.65s var(--nav-ease),
+    font-size 0.55s var(--nav-ease),
+    border-radius 0.55s var(--nav-ease);
 }
 
 .austro .nav-links-rail > a:hover {
@@ -441,10 +443,11 @@
 
 .austro .nav-links-rail > a.active {
   color: var(--ink-1);
-  background: rgba(191, 219, 254, 0.62);
+  background: #fff;
   box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 10px 28px -14px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 #fff;
 }
 
 .austro .nav-links-rail > a:focus-visible {
@@ -471,14 +474,14 @@
   white-space: nowrap;
   box-shadow: none;
   transition:
-    color 0.38s var(--ease-smooth),
-    background 0.38s var(--ease-smooth),
-    box-shadow 0.42s var(--ease-smooth),
-    transform 0.35s var(--ease-smooth),
-    padding 0.48s var(--nav-ease),
-    font-size 0.45s var(--nav-ease),
-    border-radius 0.45s var(--nav-ease),
-    gap 0.35s var(--nav-ease);
+    color 0.55s var(--ease-smooth),
+    background 0.62s var(--ease-smooth),
+    box-shadow 0.65s var(--ease-smooth),
+    transform 0.5s var(--ease-smooth),
+    padding 0.65s var(--nav-ease),
+    font-size 0.55s var(--nav-ease),
+    border-radius 0.55s var(--nav-ease),
+    gap 0.45s var(--nav-ease);
 }
 
 .austro .nav-dropdown-trigger:hover,
@@ -492,10 +495,11 @@
 
 .austro .nav-dropdown-trigger.active {
   color: var(--ink-1);
-  background: rgba(191, 219, 254, 0.62);
+  background: #fff;
   box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 10px 28px -14px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 #fff;
 }
 
 .austro .nav-dropdown-trigger:focus-visible {
@@ -556,9 +560,9 @@
   transform: translateY(6px) scale(0.98);
   transform-origin: top left;
   transition:
-    opacity 0.34s var(--nav-ease),
-    transform 0.34s var(--nav-ease),
-    visibility 0.34s var(--nav-ease);
+    opacity 0.48s var(--ease-smooth),
+    transform 0.52s var(--nav-ease),
+    visibility 0.48s var(--ease-smooth);
   z-index: 120;
   padding: 8px;
   -webkit-overflow-scrolling: touch;
@@ -636,13 +640,14 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     0 8px 22px -10px rgba(10, 26, 61, 0.55);
   transition:
-    background 0.26s var(--nav-ease),
-    border-color 0.26s var(--nav-ease),
-    transform 0.26s var(--nav-ease),
-    box-shadow 0.26s var(--nav-ease),
-    padding 0.48s var(--nav-ease),
-    font-size 0.42s var(--nav-ease),
-    gap 0.35s var(--nav-ease);
+    background 0.62s var(--ease-smooth),
+    border-color 0.58s var(--ease-smooth),
+    color 0.5s var(--ease-smooth),
+    transform 0.5s var(--ease-smooth),
+    box-shadow 0.65s var(--ease-smooth),
+    padding 0.65s var(--nav-ease),
+    font-size 0.55s var(--nav-ease),
+    gap 0.45s var(--nav-ease);
 }
 
 .austro .nav-cta:hover {
@@ -679,11 +684,12 @@
 }
 
 .austro .nav-wrap:not(.nav-wrap--compact) .nav-links-rail > a.active {
-  color: #0b1224;
-  background: rgba(186, 230, 253, 0.94);
+  color: var(--ink-1);
+  background: #fff;
   box-shadow:
-    0 0 0 1px rgba(125, 211, 252, 0.65),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    0 0 0 1px rgba(255, 255, 255, 0.65),
+    0 12px 32px -14px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 #fff;
 }
 
 .austro .nav-wrap:not(.nav-wrap--compact) .nav-dropdown-trigger {
@@ -700,11 +706,12 @@
 }
 
 .austro .nav-wrap:not(.nav-wrap--compact) .nav-dropdown-trigger.active {
-  color: #0b1224;
-  background: rgba(186, 230, 253, 0.94);
+  color: var(--ink-1);
+  background: #fff;
   box-shadow:
-    0 0 0 1px rgba(125, 211, 252, 0.65),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    0 0 0 1px rgba(255, 255, 255, 0.65),
+    0 12px 32px -14px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 #fff;
 }
 
 .austro .nav-wrap:not(.nav-wrap--compact) .nav-dropdown-chev {
@@ -714,26 +721,26 @@
 }
 
 .austro .nav-wrap:not(.nav-wrap--compact) .nav-cta {
-  background: linear-gradient(165deg, #4f7dff 0%, #2563eb 42%, #1e3a8a 100%);
-  color: #fff;
-  border: 1px solid rgba(186, 210, 255, 0.45);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 48%, #f1f5f9 100%);
+  color: var(--ink-1);
+  border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    0 12px 36px -14px rgba(30, 64, 175, 0.55);
+    inset 0 1px 0 #fff,
+    0 10px 36px -14px rgba(0, 0, 0, 0.22);
 }
 
 .austro .nav-wrap:not(.nav-wrap--compact) .nav-cta:hover {
-  background: linear-gradient(165deg, #6b8fff 0%, #3b82f6 45%, #1d4ed8 100%);
-  color: #fff;
-  border-color: rgba(219, 234, 254, 0.55);
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  color: var(--blue);
+  border-color: rgba(255, 255, 255, 1);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 16px 44px -16px rgba(37, 99, 235, 0.55);
+    inset 0 1px 0 #fff,
+    0 14px 40px -14px rgba(0, 0, 0, 0.2);
 }
 
 .austro .nav-wrap:not(.nav-wrap--compact) .nav-cta .dot {
-  background: #e0e7ff;
-  box-shadow: 0 0 10px rgba(224, 231, 255, 0.75);
+  background: var(--blue);
+  box-shadow: 0 0 0 2px rgba(30, 84, 224, 0.12);
 }
 
 .austro .nav-wrap--compact .nav-dropdown-trigger {
@@ -750,11 +757,12 @@
 }
 
 .austro .nav-wrap--compact .nav-dropdown-trigger.active {
-  color: var(--blue);
-  background: rgba(186, 230, 253, 0.78);
+  color: var(--ink-1);
+  background: #fff;
   box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    0 0 0 1px rgba(20, 49, 110, 0.08),
+    0 6px 18px -10px rgba(20, 49, 110, 0.15),
+    inset 0 1px 0 #fff;
 }
 
 .austro .nav-wrap--compact .nav-dropdown-chev {
@@ -765,23 +773,23 @@
 .austro .nav-wrap--compact .nav-cta {
   padding: 10px 20px;
   font-size: 11px;
-  background: linear-gradient(165deg, #4f7dff 0%, #2563eb 45%, #1e3a8a 100%);
-  color: #fff;
-  border: 1px solid rgba(147, 197, 253, 0.35);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 55%, #f1f5f9 100%);
+  color: var(--ink-1);
+  border: 1px solid rgba(20, 49, 110, 0.1);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 8px 24px -12px rgba(30, 64, 175, 0.45);
+    inset 0 1px 0 #fff,
+    0 6px 20px -10px rgba(20, 49, 110, 0.12);
 }
 
 .austro .nav-wrap--compact .nav-cta:hover {
-  background: linear-gradient(165deg, #6b8fff 0%, #3b82f6 48%, #1d4ed8 100%);
-  border-color: rgba(191, 219, 254, 0.55);
-  color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  border-color: rgba(30, 84, 224, 0.22);
+  color: var(--blue);
 }
 
 .austro .nav-wrap--compact .nav-cta .dot {
-  background: #e0e7ff;
-  box-shadow: 0 0 8px rgba(224, 231, 255, 0.65);
+  background: var(--blue);
+  box-shadow: 0 0 0 2px rgba(30, 84, 224, 0.1);
 }
 
 .austro .nav-wrap--compact .brand-mark {
@@ -821,11 +829,12 @@
 }
 
 .austro .nav-wrap--compact .nav-links-rail > a.active {
-  color: var(--blue);
-  background: rgba(186, 230, 253, 0.78);
+  color: var(--ink-1);
+  background: #fff;
   box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    0 0 0 1px rgba(20, 49, 110, 0.08),
+    0 6px 18px -10px rgba(20, 49, 110, 0.14),
+    inset 0 1px 0 #fff;
 }
 
 .austro .nav-wrap--compact .nav-dropdown-trigger {
@@ -937,9 +946,9 @@
   }
 
   .austro .nav-links-rail > a.active {
-    color: var(--blue);
-    background: rgba(186, 230, 253, 0.72);
-    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.35);
+    color: var(--ink-1);
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(20, 49, 110, 0.1);
   }
 
   .austro .nav-wrap:not(.nav-wrap--compact) .nav-links-rail > a,
@@ -951,9 +960,9 @@
   }
 
   .austro .nav-wrap:not(.nav-wrap--compact) .nav-links-rail > a.active {
-    color: var(--blue);
-    background: rgba(186, 230, 253, 0.72);
-    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.35);
+    color: var(--ink-1);
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(20, 49, 110, 0.1);
   }
 
   .austro .nav-links-rail .nav-dropdown-wrap {
@@ -981,9 +990,9 @@
   }
 
   .austro .nav-links-rail .nav-dropdown-trigger.active {
-    color: var(--blue);
-    background: rgba(186, 230, 253, 0.72);
-    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.35);
+    color: var(--ink-1);
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(20, 49, 110, 0.1);
   }
 
   .austro .nav-links-rail .nav-dropdown-panel {
@@ -1212,6 +1221,28 @@
 
 .austro .hero.hero--full-video h1.display em {
   color: #7dd3fc;
+}
+
+/* About page — ZLD video hero */
+.austro .hero.hero--full-video.hero--about-video .hero-main--center h1.display {
+  margin-top: 0;
+}
+
+.austro .hero.hero--about-video .about-company {
+  margin-top: 28px;
+  max-width: 46rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: rgba(248, 250, 252, 0.96);
+  text-shadow: 0 1px 24px rgba(0, 0, 0, 0.55);
+}
+
+.austro .hero.hero--about-video .about-meta {
+  margin-top: 12px;
+  text-align: center;
+  color: rgba(186, 210, 254, 0.92);
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.45);
 }
 
 .austro .hero.hero--full-video .hero-sub {
@@ -2372,4 +2403,193 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-3);
+}
+
+/* Service detail — /services/[slug] */
+.austro .service-detail {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 40px 28px 72px;
+  background: linear-gradient(180deg, #fff 0%, var(--paper) 48%);
+  border-bottom: 1px solid var(--line);
+}
+
+@media (min-width: 768px) {
+  .austro .service-detail {
+    padding: 52px 36px 88px;
+  }
+}
+
+.austro .service-detail__crumb {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.austro .service-detail__crumb a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.28s ease;
+}
+
+.austro .service-detail__crumb a:hover {
+  color: var(--blue-2);
+}
+
+.austro .service-detail__crumb-sep {
+  color: var(--text-3);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.austro .service-detail__crumb-current {
+  color: var(--text);
+}
+
+/* Shared typographic hero — “Services” only, every /services/[slug] */
+.austro .service-detail__shared-hero {
+  margin: 8px 0 36px;
+  padding: 0 0 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (min-width: 768px) {
+  .austro .service-detail__shared-hero {
+    margin-bottom: 44px;
+    padding-bottom: 40px;
+  }
+}
+
+.austro .service-detail__shared-hero-title {
+  margin: 0;
+  font-size: clamp(52px, 11vw, 112px);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+  color: var(--text);
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .austro .service-detail__shared-hero-title {
+    background: linear-gradient(
+      135deg,
+      var(--text) 0%,
+      var(--text) 48%,
+      var(--blue) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Two-up gallery under bullets */
+.austro .service-detail__gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin: 0 0 48px;
+}
+
+@media (min-width: 720px) {
+  .austro .service-detail__gallery {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+}
+
+.austro .service-detail__gallery-item {
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  box-shadow: 0 10px 44px -24px rgba(20, 49, 110, 0.18);
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.35s ease;
+}
+
+.austro .service-detail__gallery-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(30, 84, 224, 0.18);
+  box-shadow: 0 20px 56px -28px rgba(30, 84, 224, 0.2);
+}
+
+.austro .service-detail__gallery-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.austro .service-detail__header {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.austro .service-detail__title {
+  font-size: clamp(34px, 4.2vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  color: var(--text);
+  max-width: min(22ch, 100%);
+}
+
+.austro .service-detail__intro {
+  margin-top: 22px;
+  max-width: 62ch;
+  font-size: clamp(17px, 1.5vw, 19px);
+  line-height: 1.65;
+  color: var(--text-2);
+}
+
+.austro .service-detail__points {
+  list-style: none;
+  margin: 0 0 44px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (min-width: 900px) {
+  .austro .service-detail__points {
+    gap: 16px;
+  }
+}
+
+.austro .service-detail__points li {
+  margin: 0;
+  padding: 22px 24px 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-2);
+  box-shadow: 0 4px 22px -14px rgba(20, 49, 110, 0.12);
+  transition:
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.38s ease,
+    border-color 0.38s ease;
+}
+
+.austro .service-detail__points li:hover {
+  transform: translateY(-3px);
+  border-color: rgba(30, 84, 224, 0.2);
+  box-shadow: 0 16px 44px -22px rgba(30, 84, 224, 0.22);
+}
+
+.austro .service-detail__cta {
+  padding-top: 4px;
 }
