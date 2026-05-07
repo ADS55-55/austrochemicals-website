@@ -1,21 +1,25 @@
 import Link from "next/link";
+import { HeroBackgroundVideo } from "@/components/marketing/HeroBackgroundVideo";
 import { InfoCard, InfoGrid } from "@/components/marketing/InfoCards";
 import { Reveal } from "@/components/marketing/Reveal";
 
 export default function AboutPage() {
   return (
     <>
-      <section className="hero" aria-labelledby="about-hero-heading">
+      <section
+        className="hero hero--full-video hero--about-video"
+        aria-labelledby="about-hero-heading"
+      >
+        <HeroBackgroundVideo detectedSrc={null} forcedSrc="/video/ZLD.mp4" />
         <div className="grid-bg" aria-hidden />
         <div className="hero-bg-text" aria-hidden>
-          Water
+          About
         </div>
         <div className="hero-grid">
           <Reveal>
-            <div>
-              <span className="eyebrow">About Austro</span>
+            <div className="hero-main hero-main--center">
               <h1 className="display" id="about-hero-heading">
-                Solving the world&apos;s most vital crisis —{" "}
+                About Austro, solving the world&apos;s most vital crisis{" "}
                 <em>one drop</em> at a time.
               </h1>
               <p className="about-company">

@@ -11,17 +11,21 @@ const FALLBACK_URLS = [
 
 export function HeroBackgroundVideo({
   detectedSrc,
+  forcedSrc = null,
 }: {
   detectedSrc: string | null;
+  /** When set, only this URL is used (e.g. page-specific hero). */
+  forcedSrc?: string | null;
 }) {
   const candidates = useMemo(() => {
+    if (forcedSrc) return [forcedSrc];
     const order: string[] = [];
     if (detectedSrc) order.push(detectedSrc);
     for (const u of FALLBACK_URLS) {
       if (!order.includes(u)) order.push(u);
     }
     return order;
-  }, [detectedSrc]);
+  }, [detectedSrc, forcedSrc]);
 
   const [index, setIndex] = useState(0);
   const onVideoError = useCallback(() => {

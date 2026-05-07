@@ -186,7 +186,7 @@ export function SiteNav() {
           </button>
           <Link className="nav-cta" href="/contact">
             <span className="dot" aria-hidden />
-            Request Code
+            Request Quote
           </Link>
         </div>
       </nav>

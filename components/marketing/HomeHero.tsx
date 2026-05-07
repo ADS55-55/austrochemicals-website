@@ -28,7 +28,7 @@ export function HomeHero() {
               Explore Solutions <span className="arrow">→</span>
             </Link>
             <Link className="btn-ghost" href="/contact">
-              Request Code
+              Request Quote
             </Link>
           </div>
         </div>
