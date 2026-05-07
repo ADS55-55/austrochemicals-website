@@ -2568,10 +2568,25 @@
   font-weight: 600;
 }
 
-/* One lead card: intro + numbered detail rows */
-.austro .service-detail__lead-card {
+/* Centered, narrower lead card (intro + numbered rows) */
+.austro .service-detail__lead-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin: 0 0 32px;
-  padding: 34px 28px 32px;
+}
+
+@media (min-width: 768px) {
+  .austro .service-detail__lead-wrap {
+    margin-bottom: 36px;
+  }
+}
+
+.austro .service-detail__lead-card {
+  width: 100%;
+  max-width: min(44rem, 100%);
+  margin: 0;
+  padding: 32px 26px 30px;
   background: #fff;
   border: 1px solid rgba(20, 49, 110, 0.08);
   border-radius: 20px;
@@ -2583,14 +2598,14 @@
 
 @media (min-width: 768px) {
   .austro .service-detail__lead-card {
-    padding: 44px 48px 40px;
-    margin-bottom: 36px;
+    max-width: min(46rem, 100%);
+    padding: 40px 40px 38px;
   }
 }
 
 .austro .service-detail__lead-card .service-detail__intro {
   margin: 0;
-  max-width: 72ch;
+  max-width: none;
 }
 
 .austro .service-detail__highlights {

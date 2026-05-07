@@ -70,21 +70,26 @@ export function ServiceDetailView({ data }: { data: ServiceDetailContent }) {
           </Reveal>
 
           <Reveal>
-            <div className="service-detail__lead-card">
-              <p className="service-detail__intro">{data.intro}</p>
-              <div className="service-detail__highlights" role="list">
-                {data.keyPoints.map((text, i) => (
-                  <div
-                    key={i}
-                    className="service-detail__highlight-row"
-                    role="listitem"
-                  >
-                    <span className="service-detail__highlight-idx" aria-hidden>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="service-detail__highlight-text">{text}</p>
-                  </div>
-                ))}
+            <div className="service-detail__lead-wrap">
+              <div className="service-detail__lead-card">
+                <p className="service-detail__intro">{data.intro}</p>
+                <div className="service-detail__highlights" role="list">
+                  {data.keyPoints.map((text, i) => (
+                    <div
+                      key={i}
+                      className="service-detail__highlight-row"
+                      role="listitem"
+                    >
+                      <span
+                        className="service-detail__highlight-idx"
+                        aria-hidden
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <p className="service-detail__highlight-text">{text}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </Reveal>
