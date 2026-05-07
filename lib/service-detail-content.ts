@@ -1,10 +1,5 @@
 /** Verbatim copy for service detail pages — do not extend beyond source text. */
 
-/** Typographic hero only — identical on every /services/[slug]. */
-export const SERVICE_SHARED_HERO = {
-  heading: "Services",
-} as const;
-
 export type ServiceDetailFigure = {
   src: string;
   alt: string;
@@ -14,7 +9,7 @@ export type ServiceDetailContent = {
   slug: string;
   /** Shown in breadcrumb: Services › [breadcrumbName] */
   breadcrumbName: string;
-  /** In-page title below the shared hero (<h2>) */
+  /** Service name — shown in hero with “Services” */
   heading: string;
   intro: string;
   keyPoints: string[];
