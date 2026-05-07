@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeroBackgroundVideo } from "@/components/marketing/HeroBackgroundVideo";
+import { SubtleGridBackground } from "@/components/marketing/SubtleGridBackground";
 import type { ServiceDetailContent } from "@/lib/service-detail-content";
 import { Reveal } from "./Reveal";
 
@@ -47,68 +48,98 @@ export function ServiceDetailView({ data }: { data: ServiceDetailContent }) {
       </section>
 
       <article className="service-detail">
-        <Reveal>
-          <div className="service-detail__split">
-            <div className="service-detail__col service-detail__col--prose">
-              <div className="service-detail__body">
-                <p className="service-detail__intro">{data.intro}</p>
-                <ul className="service-detail__points">
-                  {data.keyPoints.map((text, i) => (
-                    <li key={i}>{text}</li>
+        <SubtleGridBackground />
+        <div className="service-detail__inner">
+          <Reveal>
+            <header className="service-detail__section-head">
+              <span className="service-detail__section-tag">Overview</span>
+              <h2
+                className="service-detail__section-title"
+                id="service-overview-heading"
+              >
+                Scope &amp; capabilities
+              </h2>
+              <p className="service-detail__section-sub">
+                How we approach{" "}
+                <span className="service-detail__section-service">
+                  {data.heading}
+                </span>{" "}
+                for your plant.
+              </p>
+            </header>
+          </Reveal>
+
+          <Reveal>
+            <div className="service-detail__split">
+              <div className="service-detail__col service-detail__col--prose">
+                <div className="service-detail__body">
+                  <p className="service-detail__intro">{data.intro}</p>
+                  <ul className="service-detail__points">
+                    {data.keyPoints.map((text, i) => (
+                      <li key={i}>{text}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="service-detail__col service-detail__col--media">
+                <div
+                  className="service-detail__gallery"
+                  role="group"
+                  aria-label="Project imagery"
+                >
+                  {data.figures.map((fig, i) => (
+                    <figure
+                      key={fig.src}
+                      className="service-detail__gallery-item"
+                    >
+                      <Image
+                        src={fig.src}
+                        alt={fig.alt}
+                        fill
+                        sizes="(max-width: 959px) 100vw, min(640px, 52vw)"
+                        className="service-detail__gallery-img"
+                        priority={i === 0}
+                      />
+                    </figure>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
+          </Reveal>
 
-            <div
-              className="service-detail__gallery"
-              role="group"
-              aria-label="Project imagery"
+          <Reveal>
+            <section
+              className="service-detail__contact-cta"
+              aria-labelledby="service-contact-cta-heading"
             >
-              {data.figures.map((fig, i) => (
-                <figure key={fig.src} className="service-detail__gallery-item">
-                  <Image
-                    src={fig.src}
-                    alt={fig.alt}
-                    fill
-                    sizes="(max-width: 959px) 100vw, min(640px, 52vw)"
-                    className="service-detail__gallery-img"
-                    priority={i === 0}
-                  />
-                </figure>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <section
-            className="service-detail__contact-cta"
-            aria-labelledby="service-contact-cta-heading"
-          >
-            <p className="service-detail__contact-eyebrow">Next step</p>
-            <h2
-              className="service-detail__contact-title"
-              id="service-contact-cta-heading"
-            >
-              When you&apos;re ready, let&apos;s talk.
-            </h2>
-            <p className="service-detail__contact-lede">
-              Share your scope, discharge matrix, and timelines. Our team will
-              respond with clear options aligned to your plant goals.
-            </p>
-            <div className="service-detail__contact-actions">
-              <Link className="service-detail__contact-btn" href="/contact">
-                <span className="service-detail__contact-btn-label">
-                  Contact us
-                </span>
-                <span className="service-detail__contact-btn-arrow" aria-hidden>
-                  →
-                </span>
-              </Link>
-            </div>
-          </section>
-        </Reveal>
+              <p className="service-detail__contact-eyebrow">Next step</p>
+              <h2
+                className="service-detail__contact-title"
+                id="service-contact-cta-heading"
+              >
+                When you&apos;re ready, let&apos;s talk.
+              </h2>
+              <p className="service-detail__contact-lede">
+                Share your scope, discharge matrix, and timelines. Our team
+                will respond with clear options aligned to your plant goals.
+              </p>
+              <div className="service-detail__contact-actions">
+                <Link className="service-detail__contact-btn" href="/contact">
+                  <span className="service-detail__contact-btn-label">
+                    Contact us
+                  </span>
+                  <span
+                    className="service-detail__contact-btn-arrow"
+                    aria-hidden
+                  >
+                    →
+                  </span>
+                </Link>
+              </div>
+            </section>
+          </Reveal>
+        </div>
       </article>
     </>
   );
