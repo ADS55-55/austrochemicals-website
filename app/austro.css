@@ -2490,20 +2490,43 @@
   color: rgba(255, 255, 255, 0.96);
 }
 
-/* Intro + bullets — single prose card */
+/* Prose (left) + gallery stack (right) */
+.austro .service-detail__split {
+  display: grid;
+  gap: 28px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .austro .service-detail__split {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
+    gap: 40px 48px;
+    margin-bottom: 48px;
+  }
+}
+
+/* Intro + bullets — single prose card, left-aligned */
 .austro .service-detail__body {
   max-width: min(880px, 100%);
-  margin: 0 auto 48px;
+  margin: 0;
   padding: 36px 32px 40px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 20px;
   box-shadow: 0 12px 48px -28px rgba(20, 49, 110, 0.14);
+  text-align: left;
 }
 
 @media (min-width: 768px) {
   .austro .service-detail__body {
     padding: 40px 44px 44px;
+  }
+}
+
+@media (min-width: 960px) {
+  .austro .service-detail__split .service-detail__body {
+    max-width: none;
   }
 }
 
@@ -2513,18 +2536,20 @@
   max-width: none;
 }
 
-/* Two-up gallery under bullets */
+/* Gallery — stacked column on the right (single column on small screens) */
 .austro .service-detail__gallery {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 18px;
-  margin: 0 0 48px;
+  margin: 0;
+  width: 100%;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 960px) {
   .austro .service-detail__gallery {
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
+    position: sticky;
+    top: calc(var(--hero-nav-overlap, 0px) + 24px);
+    gap: 20px;
   }
 }
 
@@ -2554,6 +2579,91 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
   vertical-align: middle;
+}
+
+/* Contact band — blue theme, centered (below split) */
+.austro .service-detail__contact-cta {
+  margin: 0 0 40px;
+  padding: 40px 28px 44px;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid rgba(30, 84, 224, 0.14);
+  background:
+    linear-gradient(
+      165deg,
+      rgba(239, 246, 255, 0.98) 0%,
+      rgba(219, 234, 254, 0.45) 48%,
+      rgba(224, 242, 254, 0.35) 100%
+    );
+  box-shadow:
+    0 10px 44px -24px rgba(30, 84, 224, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+@media (min-width: 768px) {
+  .austro .service-detail__contact-cta {
+    padding: 48px 48px 52px;
+  }
+}
+
+.austro .service-detail__contact-title {
+  margin: 0;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--text);
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.austro .service-detail__contact-lede {
+  margin: 16px auto 0;
+  max-width: 46ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+.austro .service-detail__contact-actions {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+.austro .service-detail__contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 30px 16px 28px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue) 0%, #1d4ed8 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 12px 36px -14px rgba(30, 84, 224, 0.55),
+    0 2px 0 rgba(255, 255, 255, 0.12) inset;
+  transition:
+    transform 0.35s var(--ease-smooth),
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+.austro .service-detail__contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 44px -16px rgba(30, 84, 224, 0.55),
+    0 2px 0 rgba(255, 255, 255, 0.14) inset;
+  filter: brightness(1.05);
+}
+
+.austro .service-detail__contact-btn .arrow {
+  font-weight: 600;
 }
 
 .austro .service-detail__intro {
@@ -2591,5 +2701,7 @@
 }
 
 .austro .service-detail__cta {
-  padding-top: 4px;
+  padding-top: 8px;
+  display: flex;
+  justify-content: center;
 }
