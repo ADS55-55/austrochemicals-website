@@ -2507,6 +2507,16 @@
   color: rgba(255, 255, 255, 0.96);
 }
 
+.austro .service-detail__hero-deck {
+  margin: 22px auto 0;
+  max-width: min(52ch, 92vw);
+  font-size: clamp(14px, 1.35vw, 16px);
+  line-height: 1.58;
+  color: rgba(248, 250, 252, 0.9);
+  text-align: center;
+  text-shadow: 0 1px 22px rgba(0, 0, 0, 0.42);
+}
+
 /* Section title — centered */
 .austro .service-detail__section-head {
   margin: 0 auto 36px;
@@ -2584,9 +2594,9 @@
 
 .austro .service-detail__lead-card {
   width: 100%;
-  max-width: min(44rem, 100%);
+  max-width: min(50rem, 100%);
   margin: 0;
-  padding: 32px 26px 30px;
+  padding: 32px 28px 30px;
   background: #fff;
   border: 1px solid rgba(20, 49, 110, 0.08);
   border-radius: 20px;
@@ -2598,8 +2608,8 @@
 
 @media (min-width: 768px) {
   .austro .service-detail__lead-card {
-    max-width: min(46rem, 100%);
-    padding: 40px 40px 38px;
+    max-width: min(54rem, 100%);
+    padding: 42px 44px 40px;
   }
 }
 
