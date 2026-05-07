@@ -2042,16 +2042,27 @@
   max-width: 1480px;
   margin: 0 auto;
   padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .austro .product-preview-head {
-  max-width: 900px;
-  margin: 0 auto 48px;
+  width: 100%;
+  max-width: min(52rem, 100%);
+  margin: 0 auto 40px;
   text-align: center;
 }
 
-.austro .product-preview-deck {
-  margin-top: 16px;
+.austro .product-preview-head .section-tag {
+  justify-content: center;
+}
+
+.austro .product-preview-head .section-title {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: min(760px, 100%);
 }
 
 .austro .product-preview-grid {
@@ -2059,6 +2070,24 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
   align-items: stretch;
+  width: 100%;
+  max-width: 1480px;
+}
+
+@keyframes product-preview-cycle-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.austro .product-preview-grid--cycle {
+  animation: product-preview-cycle-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .austro .product-preview-card {
@@ -2138,45 +2167,28 @@
 }
 
 .austro .product-preview-card__body {
-  padding: 22px 20px 24px;
+  padding: 18px 18px 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 10px;
+  justify-content: center;
+  text-align: center;
 }
 
 .austro .product-preview-card__title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--text);
   margin: 0;
-  line-height: 1.25;
-}
-
-.austro .product-preview-card__teaser {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--text-2);
-  flex: 1;
-}
-
-.austro .product-preview-card__cta {
-  margin-top: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--blue);
+  line-height: 1.3;
 }
 
 .austro .product-preview-actions {
-  margin-top: 44px;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
   text-align: center;
 }
 
@@ -2184,14 +2196,6 @@
   border: none;
   cursor: pointer;
   font: inherit;
-}
-
-.austro .product-preview-hint {
-  margin: 0;
-  font-size: 13px;
-  color: var(--muted);
-  max-width: 420px;
-  line-height: 1.45;
 }
 
 /* Services */
@@ -2362,33 +2366,88 @@
   padding: 0 48px;
   max-width: 1480px;
   margin: 0 auto 48px;
+  text-align: center;
 }
 
-.austro .marquee-wrap {
+.austro .clients-head .section-tag {
+  justify-content: center;
+}
+
+.austro .clients-head .section-title {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: min(760px, 100%);
+}
+
+.austro .clients-marquee-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.austro .clients-marquee-row {
   overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 
-.austro .marquee {
+.austro .clients-marquee-inner {
   display: flex;
-  gap: 0;
   width: max-content;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-
-.austro .marquee-track {
-  display: flex;
-  gap: 0;
   flex-shrink: 0;
-  animation: austro-scroll 50s linear infinite;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
 }
 
-@keyframes austro-scroll {
-  0% {
+.austro .clients-marquee-inner--to-left {
+  animation-name: clients-marquee-drift-left;
+}
+
+.austro .clients-marquee-inner--to-right {
+  animation-name: clients-marquee-drift-right;
+}
+
+.austro .clients-marquee-seq {
+  display: flex;
+  flex-shrink: 0;
+}
+
+@keyframes clients-marquee-drift-left {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-100%);
+
+  to {
+    transform: translateX(-50%);
   }
+}
+
+@keyframes clients-marquee-drift-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .austro .clients-marquee-inner {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+.austro .clients-footer-bar {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 40px 48px 72px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .austro .client {

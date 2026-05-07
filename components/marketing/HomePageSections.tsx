@@ -97,10 +97,7 @@ export function HomePageSections() {
         <ClientMarquee />
 
         <Reveal>
-          <div className="cta-strip" id="contact">
-            <h3>
-              Ready to engineer <em>your</em> water loop?
-            </h3>
+          <div className="clients-footer-bar" id="contact">
             <Link className="btn-primary" href="/contact">
               Start a project <span className="arrow">→</span>
             </Link>
