@@ -49,13 +49,15 @@ export function ServiceDetailView({ data }: { data: ServiceDetailContent }) {
       <article className="service-detail">
         <Reveal>
           <div className="service-detail__split">
-            <div className="service-detail__body">
-              <p className="service-detail__intro">{data.intro}</p>
-              <ul className="service-detail__points">
-                {data.keyPoints.map((text, i) => (
-                  <li key={i}>{text}</li>
-                ))}
-              </ul>
+            <div className="service-detail__col service-detail__col--prose">
+              <div className="service-detail__body">
+                <p className="service-detail__intro">{data.intro}</p>
+                <ul className="service-detail__points">
+                  {data.keyPoints.map((text, i) => (
+                    <li key={i}>{text}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <div
@@ -68,9 +70,8 @@ export function ServiceDetailView({ data }: { data: ServiceDetailContent }) {
                   <Image
                     src={fig.src}
                     alt={fig.alt}
-                    width={1200}
-                    height={800}
-                    sizes="(max-width: 959px) 100vw, 400px"
+                    fill
+                    sizes="(max-width: 959px) 100vw, min(640px, 52vw)"
                     className="service-detail__gallery-img"
                     priority={i === 0}
                   />
@@ -85,30 +86,28 @@ export function ServiceDetailView({ data }: { data: ServiceDetailContent }) {
             className="service-detail__contact-cta"
             aria-labelledby="service-contact-cta-heading"
           >
-            <h2 className="service-detail__contact-title" id="service-contact-cta-heading">
-              Do you want to get in touch?
+            <p className="service-detail__contact-eyebrow">Next step</p>
+            <h2
+              className="service-detail__contact-title"
+              id="service-contact-cta-heading"
+            >
+              When you&apos;re ready, let&apos;s talk.
             </h2>
             <p className="service-detail__contact-lede">
-              Connect with us to discuss your project, treatment goals, and how
-              we can support your water and wastewater needs.
+              Share your scope, discharge matrix, and timelines. Our team will
+              respond with clear options aligned to your plant goals.
             </p>
             <div className="service-detail__contact-actions">
-              <Link
-                className="service-detail__contact-btn"
-                href="/contact"
-              >
-                Contact us <span className="arrow">→</span>
+              <Link className="service-detail__contact-btn" href="/contact">
+                <span className="service-detail__contact-btn-label">
+                  Contact us
+                </span>
+                <span className="service-detail__contact-btn-arrow" aria-hidden>
+                  →
+                </span>
               </Link>
             </div>
           </section>
-        </Reveal>
-
-        <Reveal>
-          <div className="service-detail__cta">
-            <Link className="btn-ghost" href="/services">
-              All services <span className="arrow">→</span>
-            </Link>
-          </div>
         </Reveal>
       </article>
     </>

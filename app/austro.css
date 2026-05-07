@@ -2156,9 +2156,9 @@
 
 /* Footer */
 .austro footer {
-  background: linear-gradient(180deg, #0a1a3d 0%, #02091c 100%);
-  color: #fff;
-  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, #e8f2ff 0%, #d4e7fc 45%, #c4daf8 100%);
+  color: var(--text);
+  border-top: 1px solid rgba(30, 84, 224, 0.12);
   padding: 80px 48px 40px;
   position: relative;
   overflow: hidden;
@@ -2167,24 +2167,34 @@
 .austro .foot-big {
   max-width: 1480px;
   margin: 0 auto 64px;
-  font-size: clamp(72px, 14vw, 200px);
+  font-size: clamp(40px, 7.5vw, 104px);
   font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 0.85;
-  background: linear-gradient(180deg, rgba(155, 231, 255, 0.55) 0%, rgba(46, 107, 255, 0.18) 60%, transparent 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  color: #0b1f4a;
   display: flex;
   align-items: baseline;
-  gap: 0.05em;
+  gap: 0.12em;
   flex-wrap: wrap;
 }
 
-.austro .foot-big em {
+.austro .foot-big-word {
+  background: linear-gradient(180deg, #1e3a5f 0%, #0b1f4a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.austro .foot-big-chem {
   font-family: var(--font-instrument), serif;
   font-style: italic;
   font-weight: 400;
+  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .austro .foot-grid {
@@ -2194,7 +2204,7 @@
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 48px;
   padding-bottom: 48px;
-  border-bottom: 1px solid rgba(155, 193, 255, 0.16);
+  border-bottom: 1px solid rgba(30, 84, 224, 0.1);
 }
 
 .austro .foot-col h5 {
@@ -2202,7 +2212,7 @@
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #7c92be;
+  color: #3b5a9a;
   margin-bottom: 22px;
   font-weight: 500;
 }
@@ -2211,7 +2221,7 @@
 .austro .foot-col p {
   display: block;
   font-size: 14.5px;
-  color: #c7d4ec;
+  color: #334b74;
   margin-bottom: 12px;
   line-height: 1.5;
 }
@@ -2222,7 +2232,7 @@
 
 .austro .foot-addr {
   font-size: 14.5px;
-  color: #c7d4ec;
+  color: #334b74;
   line-height: 1.6;
   max-width: 32ch;
 }
@@ -2249,15 +2259,15 @@
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #7c92be;
+  color: #45609c;
 }
 
 .austro .foot-bottom a {
-  color: #7c92be;
+  color: #45609c;
 }
 
 .austro .foot-bottom a:hover {
-  color: #fff;
+  color: var(--blue);
 }
 
 .austro .foot-bottom .links {
@@ -2490,20 +2500,28 @@
   color: rgba(255, 255, 255, 0.96);
 }
 
-/* Prose (left) + gallery stack (right) */
+/* Prose (left, narrower) + gallery (right, taller share of row) */
 .austro .service-detail__split {
   display: grid;
   gap: 28px;
   margin-bottom: 40px;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (min-width: 960px) {
   .austro .service-detail__split {
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
-    gap: 40px 48px;
+    grid-template-columns: minmax(0, 0.38fr) minmax(340px, 0.62fr);
+    gap: 28px 40px;
     margin-bottom: 48px;
   }
+}
+
+.austro .service-detail__col--prose {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  min-width: 0;
 }
 
 /* Intro + bullets — single prose card, left-aligned */
@@ -2526,7 +2544,8 @@
 
 @media (min-width: 960px) {
   .austro .service-detail__split .service-detail__body {
-    max-width: none;
+    max-width: min(48ch, 100%);
+    align-self: flex-start;
   }
 }
 
@@ -2536,98 +2555,121 @@
   max-width: none;
 }
 
-/* Gallery — stacked column on the right (single column on small screens) */
+/* Gallery — two equal rows, total height matches left card on large screens */
 .austro .service-detail__gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
   margin: 0;
   width: 100%;
+  min-height: 0;
 }
 
 @media (min-width: 960px) {
   .austro .service-detail__gallery {
-    position: sticky;
-    top: calc(var(--hero-nav-overlap, 0px) + 24px);
-    gap: 20px;
+    grid-template-rows: 1fr 1fr;
+    align-self: stretch;
+    height: 100%;
+    min-height: 0;
+    gap: 14px;
   }
 }
 
 .austro .service-detail__gallery-item {
+  position: relative;
   margin: 0;
+  min-height: 0;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--paper-2);
   box-shadow: 0 10px 44px -24px rgba(20, 49, 110, 0.18);
+  aspect-ratio: 4 / 3;
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.4s ease,
     border-color 0.35s ease;
 }
 
+@media (min-width: 960px) {
+  .austro .service-detail__gallery-item {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+}
+
 .austro .service-detail__gallery-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(30, 84, 224, 0.18);
-  box-shadow: 0 20px 56px -28px rgba(30, 84, 224, 0.2);
+  transform: translateY(-2px);
+  border-color: rgba(30, 84, 224, 0.2);
+  box-shadow: 0 20px 56px -28px rgba(30, 84, 224, 0.22);
 }
 
 .austro .service-detail__gallery-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
   object-fit: cover;
-  vertical-align: middle;
 }
 
-/* Contact band — blue theme, centered (below split) */
+/* Contact band — refined */
 .austro .service-detail__contact-cta {
-  margin: 0 0 40px;
-  padding: 40px 28px 44px;
+  margin: 0 0 48px;
+  padding: 44px 28px 48px;
   text-align: center;
-  border-radius: 20px;
-  border: 1px solid rgba(30, 84, 224, 0.14);
+  border-radius: 22px;
+  border: 1px solid rgba(30, 84, 224, 0.12);
   background:
     linear-gradient(
-      165deg,
-      rgba(239, 246, 255, 0.98) 0%,
-      rgba(219, 234, 254, 0.45) 48%,
-      rgba(224, 242, 254, 0.35) 100%
+      152deg,
+      rgba(248, 250, 252, 0.98) 0%,
+      rgba(239, 246, 255, 0.92) 38%,
+      rgba(224, 242, 254, 0.55) 100%
     );
   box-shadow:
-    0 10px 44px -24px rgba(30, 84, 224, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    0 14px 56px -30px rgba(30, 84, 224, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 @media (min-width: 768px) {
   .austro .service-detail__contact-cta {
-    padding: 48px 48px 52px;
+    padding: 52px 56px 56px;
   }
 }
 
-.austro .service-detail__contact-title {
+.austro .service-detail__contact-eyebrow {
   margin: 0;
-  font-size: clamp(22px, 2.4vw, 30px);
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
+  color: var(--blue);
+  opacity: 0.88;
+}
+
+.austro .service-detail__contact-title {
+  margin: 14px 0 0;
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.22;
   color: var(--text);
-  max-width: 36ch;
+  max-width: 28ch;
   margin-left: auto;
   margin-right: auto;
+  font-family: var(--font-instrument), serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .austro .service-detail__contact-lede {
-  margin: 16px auto 0;
-  max-width: 46ch;
-  font-size: 16px;
-  line-height: 1.6;
+  margin: 18px auto 0;
+  max-width: 44ch;
+  font-size: 15.5px;
+  line-height: 1.65;
   color: var(--text-2);
 }
 
 .austro .service-detail__contact-actions {
-  margin-top: 28px;
+  margin-top: 32px;
   display: flex;
   justify-content: center;
 }
@@ -2635,19 +2677,22 @@
 .austro .service-detail__contact-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 16px 30px 16px 28px;
+  min-height: 52px;
+  padding: 0 32px;
   border-radius: 999px;
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
+  line-height: 1;
   text-decoration: none;
   color: #fff;
-  background: linear-gradient(135deg, var(--blue) 0%, #1d4ed8 100%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(145deg, #1d4ed8 0%, var(--blue) 48%, #172554 130%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow:
-    0 12px 36px -14px rgba(30, 84, 224, 0.55),
-    0 2px 0 rgba(255, 255, 255, 0.12) inset;
+    0 14px 40px -16px rgba(30, 64, 175, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
   transition:
     transform 0.35s var(--ease-smooth),
     box-shadow 0.35s ease,
@@ -2657,13 +2702,25 @@
 .austro .service-detail__contact-btn:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 18px 44px -16px rgba(30, 84, 224, 0.55),
-    0 2px 0 rgba(255, 255, 255, 0.14) inset;
-  filter: brightness(1.05);
+    0 20px 48px -14px rgba(30, 64, 175, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  filter: brightness(1.04);
 }
 
-.austro .service-detail__contact-btn .arrow {
+.austro .service-detail__contact-btn-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.austro .service-detail__contact-btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 17px;
   font-weight: 600;
+  transform: translateX(1px);
 }
 
 .austro .service-detail__intro {
@@ -2698,10 +2755,4 @@
 
 .austro .service-detail__body .service-detail__points li::marker {
   color: var(--blue);
-}
-
-.austro .service-detail__cta {
-  padding-top: 8px;
-  display: flex;
-  justify-content: center;
 }
