@@ -4,8 +4,7 @@ export function SiteFooter() {
   return (
     <footer>
       <div className="foot-big">
-        <span className="foot-big-word">OSTRO</span>{" "}
-        <em className="foot-big-chem">CHEMICALS</em>
+        Austro<em>Chem.</em>
       </div>
       <div className="foot-grid">
         <div className="foot-col">
@@ -15,7 +14,7 @@ export function SiteFooter() {
             <br />
             Plot 14B, Phase II, GIDC Vatva
             <br />
-            Ahmedabad, 382 445
+            Ahmedabad — 382 445
             <br />
             Gujarat, India
           </p>
@@ -55,9 +54,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="foot-bottom">
-        <span>
-          © {new Date().getFullYear()} OSTRO CHEMICALS · All rights reserved
-        </span>
+        <span>© {new Date().getFullYear()} Austro Chem · All rights reserved</span>
         <div className="links">
           <Link href="/contact">Privacy</Link>
           <Link href="/contact">Terms</Link>

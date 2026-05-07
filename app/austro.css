@@ -2156,9 +2156,9 @@
 
 /* Footer */
 .austro footer {
-  background: linear-gradient(180deg, #e8f2ff 0%, #d4e7fc 45%, #c4daf8 100%);
-  color: var(--text);
-  border-top: 1px solid rgba(30, 84, 224, 0.12);
+  background: linear-gradient(180deg, #0a1a3d 0%, #02091c 100%);
+  color: #fff;
+  border-top: 1px solid var(--line);
   padding: 80px 48px 40px;
   position: relative;
   overflow: hidden;
@@ -2167,34 +2167,24 @@
 .austro .foot-big {
   max-width: 1480px;
   margin: 0 auto 64px;
-  font-size: clamp(40px, 7.5vw, 104px);
+  font-size: clamp(72px, 14vw, 200px);
   font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.02;
-  color: #0b1f4a;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  background: linear-gradient(180deg, rgba(155, 231, 255, 0.55) 0%, rgba(46, 107, 255, 0.18) 60%, transparent 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   display: flex;
   align-items: baseline;
-  gap: 0.12em;
+  gap: 0.05em;
   flex-wrap: wrap;
 }
 
-.austro .foot-big-word {
-  background: linear-gradient(180deg, #1e3a5f 0%, #0b1f4a 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-.austro .foot-big-chem {
+.austro .foot-big em {
   font-family: var(--font-instrument), serif;
   font-style: italic;
   font-weight: 400;
-  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 .austro .foot-grid {
@@ -2204,7 +2194,7 @@
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 48px;
   padding-bottom: 48px;
-  border-bottom: 1px solid rgba(30, 84, 224, 0.1);
+  border-bottom: 1px solid rgba(155, 193, 255, 0.16);
 }
 
 .austro .foot-col h5 {
@@ -2212,7 +2202,7 @@
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #3b5a9a;
+  color: #7c92be;
   margin-bottom: 22px;
   font-weight: 500;
 }
@@ -2221,7 +2211,7 @@
 .austro .foot-col p {
   display: block;
   font-size: 14.5px;
-  color: #334b74;
+  color: #c7d4ec;
   margin-bottom: 12px;
   line-height: 1.5;
 }
@@ -2232,7 +2222,7 @@
 
 .austro .foot-addr {
   font-size: 14.5px;
-  color: #334b74;
+  color: #c7d4ec;
   line-height: 1.6;
   max-width: 32ch;
 }
@@ -2259,15 +2249,15 @@
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #45609c;
+  color: #7c92be;
 }
 
 .austro .foot-bottom a {
-  color: #45609c;
+  color: #7c92be;
 }
 
 .austro .foot-bottom a:hover {
-  color: var(--blue);
+  color: #fff;
 }
 
 .austro .foot-bottom .links {
