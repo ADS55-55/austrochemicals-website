@@ -23,9 +23,9 @@ export function SubtleGridBackground({ className }: { className?: string }) {
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-slate-50/95 to-[#f6f8fc]"
         style={{
           maskImage:
-            "radial-gradient(ellipse 72% 60% at 50% 38%, transparent 18%, black 72%)",
+            "radial-gradient(ellipse 92% 72% at 50% 42%, transparent 12%, black 78%)",
           WebkitMaskImage:
-            "radial-gradient(ellipse 72% 60% at 50% 38%, transparent 18%, black 72%)",
+            "radial-gradient(ellipse 92% 72% at 50% 42%, transparent 12%, black 78%)",
         }}
       />
     </div>

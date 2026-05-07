@@ -70,41 +70,40 @@ export function ServiceDetailView({ data }: { data: ServiceDetailContent }) {
           </Reveal>
 
           <Reveal>
-            <div className="service-detail__split">
-              <div className="service-detail__col service-detail__col--prose">
-                <div className="service-detail__body">
-                  <p className="service-detail__intro">{data.intro}</p>
-                  <ul className="service-detail__points">
-                    {data.keyPoints.map((text, i) => (
-                      <li key={i}>{text}</li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="service-detail__lead-card">
+              <p className="service-detail__intro">{data.intro}</p>
+              <div className="service-detail__highlights" role="list">
+                {data.keyPoints.map((text, i) => (
+                  <p
+                    key={i}
+                    className="service-detail__highlight"
+                    role="listitem"
+                  >
+                    {text}
+                  </p>
+                ))}
               </div>
+            </div>
+          </Reveal>
 
-              <div className="service-detail__col service-detail__col--media">
-                <div
-                  className="service-detail__gallery"
-                  role="group"
-                  aria-label="Project imagery"
-                >
-                  {data.figures.map((fig, i) => (
-                    <figure
-                      key={fig.src}
-                      className="service-detail__gallery-item"
-                    >
-                      <Image
-                        src={fig.src}
-                        alt={fig.alt}
-                        fill
-                        sizes="(max-width: 959px) 100vw, min(640px, 52vw)"
-                        className="service-detail__gallery-img"
-                        priority={i === 0}
-                      />
-                    </figure>
-                  ))}
-                </div>
-              </div>
+          <Reveal>
+            <div
+              className="service-detail__gallery service-detail__gallery--row"
+              role="group"
+              aria-label="Project imagery"
+            >
+              {data.figures.map((fig, i) => (
+                <figure key={fig.src} className="service-detail__gallery-item">
+                  <Image
+                    src={fig.src}
+                    alt={fig.alt}
+                    fill
+                    sizes="(max-width: 639px) 100vw, 50vw"
+                    className="service-detail__gallery-img"
+                    priority={i === 0}
+                  />
+                </figure>
+              ))}
             </div>
           </Reveal>
 
