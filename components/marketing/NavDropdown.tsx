@@ -29,6 +29,8 @@ type NavDropdownProps = {
   label: string;
   items: NavDropdownItem[];
   isActive?: boolean;
+  /** Optional id for the trigger link (e.g. focus when opening menu from elsewhere). */
+  triggerId?: string;
 };
 
 export function NavDropdown({
@@ -36,10 +38,12 @@ export function NavDropdown({
   label,
   items,
   isActive = false,
+  triggerId,
 }: NavDropdownProps) {
   return (
     <div className="nav-dropdown-wrap">
       <Link
+        id={triggerId}
         href={basePath}
         className={`nav-dropdown-trigger${isActive ? " active" : ""}`.trim()}
       >

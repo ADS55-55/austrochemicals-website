@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { DetailSplitBand } from "@/components/marketing/DetailSplitBand";
 import { HeroBackgroundVideo } from "@/components/marketing/HeroBackgroundVideo";
 import { SubtleGridBackground } from "@/components/marketing/SubtleGridBackground";
 import {
@@ -73,8 +73,10 @@ export function IndustryDetailView({ data }: { data: IndustryDetailContent }) {
             </header>
           </Reveal>
 
-          <Reveal>
-            <div className="service-detail__lead-wrap">
+          <DetailSplitBand
+            galleryLabel="Industry imagery"
+            figures={data.figures}
+            lead={
               <div className="service-detail__lead-card">
                 <p className="service-detail__intro">{data.intro}</p>
                 <div className="service-detail__highlights" role="list">
@@ -95,29 +97,8 @@ export function IndustryDetailView({ data }: { data: IndustryDetailContent }) {
                   ))}
                 </div>
               </div>
-            </div>
-          </Reveal>
-
-          <Reveal>
-            <div
-              className="service-detail__gallery service-detail__gallery--row"
-              role="group"
-              aria-label="Industry imagery"
-            >
-              {data.figures.map((fig, i) => (
-                <figure key={fig.src} className="service-detail__gallery-item">
-                  <Image
-                    src={fig.src}
-                    alt={fig.alt}
-                    fill
-                    sizes="(max-width: 639px) 100vw, 50vw"
-                    className="service-detail__gallery-img"
-                    priority={i === 0}
-                  />
-                </figure>
-              ))}
-            </div>
-          </Reveal>
+            }
+          />
 
           <Reveal>
             <section

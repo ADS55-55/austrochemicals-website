@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -15,8 +16,11 @@ import {
   SERVICE_DROPDOWN,
   INDUSTRY_DROPDOWN,
 } from "@/lib/nav-dropdowns";
+import { BRAND_LOGO } from "@/lib/brand-logo";
+import { OPEN_PRODUCTS_NAV_EVENT } from "@/lib/nav-events";
 
 const COMPACT_SCROLL_Y = 48;
+const NAV_PRODUCTS_TRIGGER_ID = "nav-products-menu-trigger";
 const MOBILE_NAV_MQ = "(max-width: 1100px)";
 
 export function SiteNav() {
@@ -83,6 +87,24 @@ export function SiteNav() {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
+  useEffect(() => {
+    const onOpenProductsMenu = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const mq = window.matchMedia(MOBILE_NAV_MQ);
+      window.setTimeout(() => {
+        if (mq.matches) {
+          setMenuOpen(true);
+        }
+        window.setTimeout(() => {
+          document.getElementById(NAV_PRODUCTS_TRIGGER_ID)?.focus();
+        }, mq.matches ? 420 : 120);
+      }, 180);
+    };
+    window.addEventListener(OPEN_PRODUCTS_NAV_EVENT, onOpenProductsMenu);
+    return () =>
+      window.removeEventListener(OPEN_PRODUCTS_NAV_EVENT, onOpenProductsMenu);
+  }, []);
+
   const closeIfBackdrop = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) setMenuOpen(false);
   };
@@ -100,12 +122,15 @@ export function SiteNav() {
         aria-label="Primary"
       >
         <div className="nav-left">
-          <Link className="brand" href="/">
-            <span className="brand-mark" aria-hidden />
-            <span className="brand-text">
-              <b>AUSTRO CHEM</b>
-              <span className="brand-tagline">Austrochemicals</span>
-            </span>
+          <Link className="brand brand--logo-only" href="/">
+            <Image
+              src={BRAND_LOGO.src}
+              alt="Austro Chemicals"
+              width={BRAND_LOGO.width}
+              height={BRAND_LOGO.height}
+              className="brand-logo-img"
+              priority
+            />
           </Link>
         </div>
 
@@ -133,6 +158,7 @@ export function SiteNav() {
             </Link>
 
             <NavDropdown
+              triggerId={NAV_PRODUCTS_TRIGGER_ID}
               basePath="/products"
               label="Products"
               items={PRODUCT_DROPDOWN}

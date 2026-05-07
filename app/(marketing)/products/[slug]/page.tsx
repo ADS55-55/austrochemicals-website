@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PRODUCT_DROPDOWN, productSlugs } from "@/lib/nav-dropdowns";
-import { DetailShell } from "@/components/marketing/DetailShell";
+import { ProductDetailView } from "@/components/marketing/ProductDetailView";
+import {
+  getProductDetailContent,
+  PRODUCT_SHARED_HERO,
+} from "@/lib/product-detail-content";
+import { productSlugs } from "@/lib/nav-dropdowns";
 
 export function generateStaticParams() {
   return productSlugs().map((slug) => ({ slug }));
@@ -8,16 +13,22 @@ export function generateStaticParams() {
 
 type PageProps = { params: Promise<{ slug: string }> };
 
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const detail = getProductDetailContent(slug);
+  if (!detail) return { title: "Product" };
+  return {
+    title: `${detail.pageTitle} — Products — Austro Chem`,
+    description: detail.intro?.trim() || PRODUCT_SHARED_HERO.subtext,
+  };
+}
+
 export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const item = PRODUCT_DROPDOWN.find((p) => p.slug === slug);
-  if (!item) notFound();
+  const detail = getProductDetailContent(slug);
+  if (!detail) notFound();
 
-  return (
-    <DetailShell
-      sectionHref="/products"
-      sectionLabel="Products"
-      title={item.label}
-    />
-  );
+  return <ProductDetailView data={detail} />;
 }

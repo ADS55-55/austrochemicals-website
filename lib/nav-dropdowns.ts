@@ -24,6 +24,7 @@ export const PRODUCT_DROPDOWN: NavDropdownItem[] = [
   { label: "Micro Filtration", slug: "micro-filtration" },
   { label: "Gas Chlorination", slug: "gas-chlorination" },
   { label: "Ceramic Filtration", slug: "ceramic-filtration" },
+  { label: "Raw Water Treatment Plant", slug: "raw-water-treatment" },
 ];
 
 export const SERVICE_DROPDOWN: NavDropdownItem[] = [
