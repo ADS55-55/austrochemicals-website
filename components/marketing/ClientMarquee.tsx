@@ -1,29 +1,20 @@
 "use client";
 
-const clientList: [string, string][] = [
-  ["Aarti", "Pharma"],
-  ["Reliance", "Polymers"],
-  ["Arvind", "Textiles"],
-  ["Asian Paints", "Coatings"],
-  ["Cipla", "Pharma"],
-  ["Welspun", "Home"],
-  ["Tata Chemicals", "Specialty"],
-  ["Lupin", "Pharma"],
-  ["Raymond", "Textiles"],
-  ["UPL", "Agrochem"],
-  ["Pidilite", "Adhesives"],
-  ["Sun Pharma", "Pharma"],
-];
+import Image from "next/image";
+import { CLIENT_LOGO_IMAGE_SRCS } from "@/lib/client-logo-images";
 
-function LogoTiles({ prefix }: { prefix: string }) {
+function LogoStrip({ prefix }: { prefix: string }) {
   return (
     <>
-      {clientList.map(([name, sector], i) => (
-        <div key={`${prefix}-${i}`} className="client">
-          <div style={{ textAlign: "center" }}>
-            <div>{name}</div>
-            <small>{sector}</small>
-          </div>
+      {CLIENT_LOGO_IMAGE_SRCS.map((src, i) => (
+        <div key={`${prefix}-${i}`} className="client client--logo">
+          <Image
+            src={src}
+            alt=""
+            fill
+            sizes="220px"
+            className="client__logo-img"
+          />
         </div>
       ))}
     </>
@@ -32,8 +23,8 @@ function LogoTiles({ prefix }: { prefix: string }) {
 
 /**
  * Two duplicate sequences side-by-side; CSS translates -50% for a seamless loop.
- * --to-right: logos drift left → right on screen.
- * --to-left: logos drift right → left on screen.
+ * to-right: logos drift left → right on screen.
+ * to-left: logos drift right → left on screen.
  */
 function Strip({
   variant,
@@ -51,10 +42,10 @@ function Strip({
         }}
       >
         <div className="clients-marquee-seq">
-          <LogoTiles prefix={`${variant}-a`} />
+          <LogoStrip prefix={`${variant}-a`} />
         </div>
         <div className="clients-marquee-seq" aria-hidden>
-          <LogoTiles prefix={`${variant}-b`} />
+          <LogoStrip prefix={`${variant}-b`} />
         </div>
       </div>
     </div>

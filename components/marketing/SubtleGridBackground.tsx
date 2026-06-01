@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Light grid + soft radial wash — subtle edge-to-edge background for
+ * Light dotted field + soft radial wash — subtle edge-to-edge background for
  * marketing detail articles (services, industries).
  */
 export function SubtleGridBackground({ className }: { className?: string }) {
@@ -15,17 +15,17 @@ export function SubtleGridBackground({ className }: { className?: string }) {
     >
       <div
         className={cn(
-          "absolute inset-0 [background-size:40px_40px] opacity-[0.36]",
-          "[background-image:linear-gradient(to_right,rgb(226_232_240)_1px,transparent_1px),linear-gradient(to_bottom,rgb(226_232_240)_1px,transparent_1px)]",
+          "absolute inset-0 [background-size:20px_20px] opacity-[0.46]",
+          "[background-image:radial-gradient(rgb(148_163_184_/_0.42)_1px,transparent_1px)]",
         )}
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-slate-50/90 to-[#f6f8fc]"
+        className="pointer-events-none absolute inset-0 bg-white"
         style={{
           maskImage:
-            "radial-gradient(ellipse 88% 70% at 50% 42%, transparent 16%, black 78%)",
+            "radial-gradient(ellipse 88% 70% at 50% 42%, transparent 18%, black 78%)",
           WebkitMaskImage:
-            "radial-gradient(ellipse 88% 70% at 50% 42%, transparent 16%, black 78%)",
+            "radial-gradient(ellipse 88% 70% at 50% 42%, transparent 18%, black 78%)",
         }}
       />
     </div>

@@ -1,13 +1,18 @@
 import type { NextConfig } from "next";
-import path from "path";
-import { fileURLToPath } from "url";
-
-/** This config file lives at the package root; pin Turbopack so a parent lockfile does not steal the workspace root. */
-const packageRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
+  transpilePackages: ["react-globe.gl", "globe.gl", "three-globe"],
   turbopack: {
-    root: packageRoot,
+    root: process.cwd(),
+  },
+  async redirects() {
+    return [
+      { source: "/servers", destination: "/services", permanent: true },
+      { source: "/servies", destination: "/services", permanent: true },
+      { source: "/producs", destination: "/products", permanent: true },
+      { source: "/indties", destination: "/industries", permanent: true },
+      { source: "/industies", destination: "/industries", permanent: true },
+    ];
   },
 };
 

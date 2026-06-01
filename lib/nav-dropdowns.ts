@@ -5,6 +5,7 @@ export type NavDropdownItem = {
   slug: string;
   /** Reference UI shows a submenu chevron on some rows — no second-level copy was provided */
   hasNestedChevron?: boolean;
+  children?: NavDropdownItem[];
 };
 
 export const PRODUCT_DROPDOWN: NavDropdownItem[] = [
@@ -36,7 +37,17 @@ export const SERVICE_DROPDOWN: NavDropdownItem[] = [
 ];
 
 export const INDUSTRY_DROPDOWN: NavDropdownItem[] = [
-  { label: "Textile Industries", slug: "textile-industries", hasNestedChevron: true },
+  {
+    label: "Textile Industries",
+    slug: "textile-industries",
+    hasNestedChevron: true,
+    children: [
+      { label: "Dyeing Process", slug: "dyeing-process" },
+      { label: "Printing Process", slug: "printing-process" },
+      { label: "Sizing Process", slug: "sizing-process" },
+      { label: "Washing Process", slug: "washing-process" },
+    ],
+  },
   { label: "Food Industry", slug: "food-industry" },
   { label: "Dairy Processing", slug: "dairy-processing" },
   {

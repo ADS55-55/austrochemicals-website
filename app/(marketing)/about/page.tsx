@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { HeroBackgroundVideo } from "@/components/marketing/HeroBackgroundVideo";
 import { InfoCard, InfoGrid } from "@/components/marketing/InfoCards";
 import { Reveal } from "@/components/marketing/Reveal";
@@ -19,8 +20,8 @@ export default function AboutPage() {
           <Reveal>
             <div className="hero-main hero-main--center">
               <h1 className="display" id="about-hero-heading">
-                About Austro, solving the world&apos;s most vital crisis{" "}
-                <em>one drop</em> at a time.
+                Engineering cleaner water for industries that cannot afford to
+                <em> pause.</em>
               </h1>
               <p className="about-company">
                 Austro Chemicals and Biotechnologies Pvt. Ltd.
@@ -71,45 +72,63 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      <section className="canvas" aria-labelledby="md-desk-heading">
+      <section className="canvas about-leadership" aria-labelledby="about-leadership-heading">
         <Reveal>
-          <div className="section-head">
-            <div>
-              <span className="section-tag">Leadership</span>
-              <h2 className="section-title" id="md-desk-heading">
-                MD&apos;s <em>Desk</em>
-              </h2>
-            </div>
-            <p className="section-sub">
-              A perspective from the desk of our Managing Director on mission,
-              impact, and the road ahead.
-            </p>
-          </div>
-        </Reveal>
-        <Reveal>
-          <div className="product-grid">
-            <article className="pcard wide alt-light about-full">
-              <div>
-                <span className="num">MD / 01</span>
-                <h3>
-                  A. Jeyakumar — <em>Managing Director</em>
-                </h3>
-                <p>
-                  Since 1996, I have dedicated my career to one mission:
-                  delivering sustainable water and wastewater solutions that
-                  create lasting environmental impact. At Austro, we integrate
-                  chemical and environmental engineering to solve the water
-                  challenges facing industries across the globe.
-                </p>
-                <p>
-                  The world&apos;s water crisis is real — 2.8 billion people face
-                  scarcity every year, and 1.2 billion lack access to clean
-                  drinking water. We believe engineering excellence is the
-                  answer. Every plant we build, every project we consult on, is
-                  our commitment to a water-secure future.
-                </p>
+          <div className="about-md-panel">
+            <div className="about-md-portrait" aria-label="A. Jeyakumar, Managing Director">
+              <Image
+                src="/Images/MD/MD sir Profile (1).png"
+                alt="A. Jeyakumar, Managing Director of Austro"
+                fill
+                sizes="(max-width: 900px) 100vw, 44vw"
+                className="about-md-portrait__img"
+                priority={false}
+              />
+              <div className="about-md-portrait__label">
+                <strong>A. Jeyakumar</strong>
+                <span>Managing Director</span>
               </div>
-            </article>
+            </div>
+
+            <div className="about-md-copy">
+              <span className="section-tag">Leadership</span>
+              <h2 className="section-title" id="about-leadership-heading">
+                Built with engineering discipline and <em>water stewardship.</em>
+              </h2>
+              <p className="about-md-kicker">
+                Austro&apos;s work is shaped by a simple belief: water treatment
+                systems must be practical, measurable, and dependable long after
+                commissioning day.
+              </p>
+              <p>
+                Since 1996, A. Jeyakumar has led Austro with a clear focus:
+                build dependable water and wastewater systems that help
+                industries grow without compromising the environment.
+              </p>
+              <p>
+                That mindset shapes every project we take on — from ZLD plants
+                and treatment upgrades to long-term consulting for customers who
+                need performance they can measure.
+              </p>
+              <div className="about-md-quote">
+                “Clean water is not only a compliance goal. It is the foundation
+                for responsible industry.”
+              </div>
+              <div className="about-md-metrics" aria-label="Leadership highlights">
+                <div>
+                  <strong>1996</strong>
+                  <span>Founded in Tirupur</span>
+                </div>
+                <div>
+                  <strong>29+</strong>
+                  <span>Years of execution</span>
+                </div>
+                <div>
+                  <strong>ZLD</strong>
+                  <span>Core engineering focus</span>
+                </div>
+              </div>
+            </div>
           </div>
         </Reveal>
       </section>
@@ -147,38 +166,50 @@ export default function AboutPage() {
         </InfoGrid>
       </section>
 
-      <section className="canvas" aria-labelledby="who-we-are-heading">
+      <section className="canvas about-story-section" aria-labelledby="who-we-are-heading">
         <Reveal>
-          <div className="section-head">
+          <div className="section-head section-head--center">
             <div>
               <span className="section-tag">Who we are</span>
               <h2 className="section-title" id="who-we-are-heading">
-                Indian engineering, <em>global</em> standards.
+                Process-led water engineering for <em>responsible</em> industry.
               </h2>
             </div>
-            <p className="section-sub">
-              Headquartered in Tirupur — with a legacy measured in plants,
-              projects, and partnerships.
+            <p className="section-sub about-story-lede">
+              We combine chemistry, process design, fabrication, and field
+              execution into treatment systems built for real operating
+              conditions.
             </p>
           </div>
         </Reveal>
         <Reveal>
-          <div className="content-block" style={{ paddingTop: 0 }}>
-            <p
-              style={{
-                fontSize: "clamp(16px, 1.5vw, 18px)",
-                lineHeight: 1.65,
-                color: "var(--text-2)",
-                maxWidth: "72ch",
-              }}
-            >
-              Austro Chemicals and Biotechnologies is an Indian-owned
-              engineering company specialising in advanced water and wastewater
-              treatment. Headquartered in Tirupur, Tamil Nadu, we have delivered
-              1,200+ treatment plants and consulted on 1,550+ projects worldwide
-              — with a strong focus on Zero Liquid Discharge systems built to the
-              highest environmental standards.
-            </p>
+          <div className="about-story-grid">
+            <article className="about-story-card about-story-card--wide">
+              <span>01 — Engineering</span>
+              <h3>Designed for operating reality</h3>
+              <p>
+                Austro Chemicals and Biotechnologies specialises in advanced
+                water and wastewater treatment for industries where compliance,
+                uptime, and reuse matter every day.
+              </p>
+            </article>
+            <article className="about-story-card">
+              <span>02 — Execution</span>
+              <h3>From concept to commissioning</h3>
+              <p>
+                Process engineering, fabrication, civil coordination, automation,
+                and site execution are handled with one accountable delivery
+                rhythm.
+              </p>
+            </article>
+            <article className="about-story-card">
+              <span>03 — Support</span>
+              <h3>Performance after handover</h3>
+              <p>
+                Our teams stay close to plant performance so customers can keep
+                meeting discharge, reuse, and production targets with confidence.
+              </p>
+            </article>
           </div>
         </Reveal>
       </section>

@@ -1,47 +1,104 @@
-import { PageHero } from "@/components/marketing/PageHero";
-import { InfoCard, InfoGrid } from "@/components/marketing/InfoCards";
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { VideoPageHero } from "@/components/marketing/VideoPageHero";
+import { firestoreDb } from "@/lib/firebase/firestore";
+import type { BlogPostRecord } from "@/lib/firebase/types";
+
+function sortByCreatedDesc(list: BlogPostRecord[]) {
+  return [...list].sort((a, b) => (b.createdAt?.seconds ?? 0) - (a.createdAt?.seconds ?? 0));
+}
 
 export default function BlogPage() {
+  const [posts, setPosts] = useState<BlogPostRecord[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const postQuery = query(collection(firestoreDb, "blogPosts"), where("published", "==", true));
+    const unsubscribe = onSnapshot(postQuery, (snapshot) => {
+      const records: BlogPostRecord[] = snapshot.docs.map((entry) => ({
+        id: entry.id,
+        ...(entry.data() as Omit<BlogPostRecord, "id">),
+      }));
+      setPosts(sortByCreatedDesc(records));
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const hasPosts = useMemo(() => posts.length > 0, [posts.length]);
+
   return (
     <>
-      <PageHero
+      <VideoPageHero
         eyebrow="Insights"
+        bgText="Blog"
         title={
           <>
-            Notes from the <em>field.</em>
+            Engineering intelligence from the <em>plant floor.</em>
           </>
         }
-        description="Regulatory updates, process tips, and build stories from plants we commission and operate — publishing soon on this domain."
+        description="Commissioning lessons, optimization playbooks, and regulatory briefings from real water and wastewater implementations."
       />
-      <InfoGrid>
-        <InfoCard title="CPCB &amp; SPCB watch">
+
+      <div className="dotted-page-shell">
+      <section className="content-block blog-listing">
+        <div className="blog-intro-band">
           <p>
-            What changing discharge parameters mean for brownfield ETPs and new ZLD
-            investments.
+            Practical insights from operations, design, and compliance teams
+            building reliable industrial water systems every day.
           </p>
-        </InfoCard>
-        <InfoCard title="Membrane recovery levers">
-          <p>
-            Antiscalant selection, flux policy, and CIP discipline — three knobs that
-            move recovery by whole percentage points.
-          </p>
-        </InfoCard>
-        <InfoCard title="Crystallizer operations">
-          <p>
-            Seeding, supersaturation control, and solids handling lessons from live
-            MEE/MVR trains.
-          </p>
-        </InfoCard>
-        <InfoCard title="Subscribe">
-          <p>
-            Full articles and case studies will appear here. Until then, reach us at{" "}
-            <a href="mailto:hello@austrochem.com" style={{ color: "var(--blue)" }}>
-              hello@austrochem.com
-            </a>
-            .
-          </p>
-        </InfoCard>
-      </InfoGrid>
+        </div>
+        <div className="blog-grid" role="list" aria-label="Blog posts">
+          {hasPosts ? (
+            posts.map((post) => (
+              <article className="blog-card" key={post.id} role="listitem">
+                <div className="blog-card__media">
+                  <Image
+                    src={post.coverImage || "/products/zld.jpg"}
+                    alt={post.title}
+                    fill
+                    className="blog-card__img"
+                    sizes="(max-width: 900px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="blog-card__body">
+                  <p className="blog-card__meta">
+                    {post.createdAt
+                      ? post.createdAt.toDate().toLocaleDateString("en-IN", {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        })
+                      : "Recently published"}
+                  </p>
+                  <h2 className="blog-card__title">{post.title}</h2>
+                  <p className="blog-card__excerpt">{post.excerpt}</p>
+                  <Link href={`/blog/${post.slug}`} className="blog-card__cta">
+                    Read full article <span aria-hidden>→</span>
+                  </Link>
+                </div>
+              </article>
+            ))
+          ) : (
+            <article className="blog-card blog-card--empty" role="listitem">
+              <div className="blog-card__body">
+                <p className="blog-card__meta">{loading ? "Loading..." : "Insights"}</p>
+                <h2 className="blog-card__title">Fresh articles are on the way.</h2>
+                <p className="blog-card__excerpt">
+                  We&apos;re preparing the next set of technical notes. Check
+                  back shortly for new commissioning and process stories.
+                </p>
+              </div>
+            </article>
+          )}
+        </div>
+      </section>
+      </div>
     </>
   );
 }

@@ -14,7 +14,7 @@ export default function MarketingLayout({
       style={{
         background: "var(--paper)",
         color: "var(--text)",
-        fontFamily: "var(--font-inter), system-ui, sans-serif",
+        fontFamily: '"Times New Roman", Times, serif',
       }}
     >
       <SiteNav />

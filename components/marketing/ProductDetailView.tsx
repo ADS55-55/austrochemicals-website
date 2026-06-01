@@ -59,15 +59,12 @@ export function ProductDetailView({ data }: { data: ProductDetailContent }) {
                 className="display service-detail__hero-title"
                 id="product-hero-heading"
               >
-                <span className="service-detail__hero-line">
-                  {PRODUCT_SHARED_HERO.heading}
-                </span>
-                <span className="service-detail__hero-service">
+                <span className="service-detail__hero-service service-detail__hero-service--product">
                   <em>{data.breadcrumbName}</em>
                 </span>
               </h1>
               <p className="service-detail__hero-deck">
-                {PRODUCT_SHARED_HERO.subtext}
+                {data.intro?.trim() || PRODUCT_SHARED_HERO.subtext}
               </p>
             </div>
           </Reveal>
@@ -84,7 +81,7 @@ export function ProductDetailView({ data }: { data: ProductDetailContent }) {
                 className="service-detail__section-title"
                 id="product-overview-heading"
               >
-                {data.pageTitle}
+                Engineered solution details
               </h2>
             </header>
           </Reveal>

@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import { BRAND_LOGO } from "@/lib/brand-logo";
 import { getHeroVideoPublicPath } from "@/lib/hero-video";
 import { HeroBackgroundVideo } from "./HeroBackgroundVideo";
 
@@ -16,16 +14,6 @@ export function HomeHero() {
       </div>
       <div className="hero-grid">
         <div className="hero-main hero-main--center">
-          <div className="hero-brand-lockup">
-            <Image
-              src={BRAND_LOGO.src}
-              alt="Austro Chemicals"
-              width={BRAND_LOGO.width}
-              height={BRAND_LOGO.height}
-              className="hero-brand-logo"
-              priority
-            />
-          </div>
           <h1 className="display hero-headline-display" id="hero-heading">
             <span className="hero-headline-line">
               Engineering{" "}

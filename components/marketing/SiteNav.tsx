@@ -23,20 +23,28 @@ const COMPACT_SCROLL_Y = 48;
 const NAV_PRODUCTS_TRIGGER_ID = "nav-products-menu-trigger";
 const MOBILE_NAV_MQ = "(max-width: 1100px)";
 
+function usesTransparentNav(pathname: string): boolean {
+  if (pathname === "/" || pathname === "/about") return true;
+  if (pathname.startsWith("/products/")) return true;
+  if (pathname.startsWith("/services/")) return true;
+  if (pathname.startsWith("/industries/")) return true;
+  return false;
+}
+
 export function SiteNav() {
   const pathname = usePathname();
-  const [compact, setCompact] = useState(() =>
-    typeof window !== "undefined" ? window.scrollY >= COMPACT_SCROLL_Y : false,
-  );
+  const forceCompact = !usesTransparentNav(pathname);
+  const [compact, setCompact] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useLayoutEffect(() => {
     let raf = 0;
-    let last = window.scrollY >= COMPACT_SCROLL_Y;
+    let last = forceCompact || window.scrollY >= COMPACT_SCROLL_Y;
+    setCompact(last);
 
     const apply = () => {
       raf = 0;
-      const next = window.scrollY >= COMPACT_SCROLL_Y;
+      const next = forceCompact || window.scrollY >= COMPACT_SCROLL_Y;
       if (next !== last) {
         last = next;
         setCompact(next);
@@ -52,12 +60,14 @@ export function SiteNav() {
       window.removeEventListener("scroll", onScroll);
       if (raf) window.cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [forceCompact]);
 
   useEffect(() => {
     startTransition(() => {
       setMenuOpen(false);
     });
+    // Ensure page scroll is restored after navigation.
+    document.documentElement.style.overflow = "";
   }, [pathname]);
 
   useEffect(() => {
@@ -115,7 +125,7 @@ export function SiteNav() {
 
   return (
     <header
-      className={`nav-wrap${compact ? " nav-wrap--compact" : ""}`.trim()}
+      className={`nav-wrap${compact || forceCompact ? " nav-wrap--compact" : ""}`.trim()}
     >
       <nav
         className={`nav${menuOpen ? " nav--menu-open" : ""}`.trim()}

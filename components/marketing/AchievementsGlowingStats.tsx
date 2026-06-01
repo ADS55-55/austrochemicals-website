@@ -64,7 +64,7 @@ function GridItem({
 }) {
   return (
     <li className={cn("min-h-[14rem] list-none", area)}>
-      <div className="group relative h-full rounded-2xl border border-white bg-white p-px shadow-[0_1px_3px_rgba(20,49,110,0.06)] md:rounded-3xl md:p-[2px] md:shadow-[0_2px_10px_-4px_rgba(20,49,110,0.08)]">
+      <div className="group relative h-full rounded-2xl border border-[rgba(31,41,55,0.22)] bg-white p-px shadow-[0_1px_3px_rgba(20,49,110,0.06)] md:rounded-3xl md:p-[2px] md:shadow-[0_2px_10px_-4px_rgba(20,49,110,0.08)]">
         <GlowingEffect
           blur={0}
           borderWidth={2}
@@ -76,9 +76,9 @@ function GridItem({
           variant="brand"
           movementDuration={2}
         />
-        <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-[14px] border-0 bg-white p-6 shadow-none transition-[box-shadow,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] md:rounded-[20px] md:p-6 group-hover:-translate-y-px group-hover:shadow-[0_4px_24px_-12px_rgba(20,49,110,0.1)] dark:bg-neutral-950 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
+        <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-[14px] border border-[rgba(31,41,55,0.18)] bg-white p-6 shadow-none transition-[box-shadow,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] md:rounded-[20px] md:p-6 group-hover:-translate-y-px group-hover:shadow-[0_4px_24px_-12px_rgba(20,49,110,0.1)] dark:bg-neutral-950 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
           <div className="relative z-[1] flex flex-1 flex-col justify-between gap-3">
-            <div className="w-fit rounded-lg border border-neutral-600 bg-neutral-50/90 p-2 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset] dark:border-neutral-500 dark:bg-neutral-900/60">
+            <div className="w-fit rounded-lg border border-[rgba(31,41,55,0.28)] bg-neutral-50/90 p-2 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset] dark:border-neutral-500 dark:bg-neutral-900/60">
               <Icon
                 className="h-4 w-4 text-neutral-900 dark:text-neutral-400"
                 strokeWidth={2}

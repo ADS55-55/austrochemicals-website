@@ -9,19 +9,26 @@ type DetailSplitBandProps = {
   lead?: ReactNode;
   figures: readonly SplitBandFigure[];
   galleryLabel: string;
+  layout?: "side" | "stacked";
 };
 
 export function DetailSplitBand({
   lead,
   figures,
   galleryLabel,
+  layout = "side",
 }: DetailSplitBandProps) {
   const multi = figures.length > 1;
+  const isStacked = layout === "stacked";
 
   if (lead == null) {
     return (
       <Reveal>
-        <div className="service-detail__split-band service-detail__split-band--figures-only">
+        <div
+          className={`service-detail__split-band service-detail__split-band--figures-only${
+            isStacked ? " service-detail__split-band--stacked" : ""
+          }`}
+        >
           <div
             className={
               multi
@@ -58,7 +65,11 @@ export function DetailSplitBand({
 
   return (
     <Reveal>
-      <div className="service-detail__split-band">
+      <div
+        className={`service-detail__split-band${
+          isStacked ? " service-detail__split-band--stacked" : ""
+        }`}
+      >
         <div className="service-detail__lead-wrap service-detail__lead-wrap--split">
           {lead}
         </div>

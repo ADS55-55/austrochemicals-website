@@ -75,6 +75,7 @@ export function IndustryDetailView({ data }: { data: IndustryDetailContent }) {
 
           <DetailSplitBand
             galleryLabel="Industry imagery"
+            layout="stacked"
             figures={data.figures}
             lead={
               <div className="service-detail__lead-card">
@@ -99,6 +100,42 @@ export function IndustryDetailView({ data }: { data: IndustryDetailContent }) {
               </div>
             }
           />
+
+          {data.subProcesses?.length ? (
+            <Reveal>
+              <section
+                className="industry-subprocesses"
+                aria-labelledby="industry-subprocesses-heading"
+              >
+                <header className="industry-subprocesses__head">
+                  <span className="service-detail__section-tag">Textile process streams</span>
+                  <h3
+                    className="service-detail__section-title industry-subprocesses__title"
+                    id="industry-subprocesses-heading"
+                  >
+                    Process-specific ETP treatment pathways
+                  </h3>
+                </header>
+                <div className="industry-subprocesses__grid" role="list">
+                  {data.subProcesses.map((item, i) => (
+                    <article
+                      className="industry-subprocess-card"
+                      role="listitem"
+                      key={`${item.title}-${i}`}
+                    >
+                      <span className="industry-subprocess-card__num">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h4>{item.title}</h4>
+                      {item.paragraphs.map((paragraph, idx) => (
+                        <p key={`${item.title}-p-${idx}`}>{paragraph}</p>
+                      ))}
+                    </article>
+                  ))}
+                </div>
+              </section>
+            </Reveal>
+          ) : null}
 
           <Reveal>
             <section
