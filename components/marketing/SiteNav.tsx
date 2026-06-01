@@ -25,15 +25,26 @@ const MOBILE_NAV_MQ = "(max-width: 1100px)";
 
 function usesTransparentNav(pathname: string): boolean {
   if (pathname === "/" || pathname === "/about") return true;
+  if (pathname === "/blog" || pathname.startsWith("/blog/")) return true;
+  if (pathname === "/contact") return true;
   if (pathname.startsWith("/products/")) return true;
   if (pathname.startsWith("/services/")) return true;
   if (pathname.startsWith("/industries/")) return true;
   return false;
 }
 
+function usesLightHeroNav(pathname: string): boolean {
+  return (
+    pathname === "/blog" ||
+    pathname.startsWith("/blog/") ||
+    pathname === "/contact"
+  );
+}
+
 export function SiteNav() {
   const pathname = usePathname();
   const forceCompact = !usesTransparentNav(pathname);
+  const lightHeroNav = usesLightHeroNav(pathname);
   const [compact, setCompact] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -125,7 +136,7 @@ export function SiteNav() {
 
   return (
     <header
-      className={`nav-wrap${compact || forceCompact ? " nav-wrap--compact" : ""}`.trim()}
+      className={`nav-wrap${compact || forceCompact ? " nav-wrap--compact" : ""}${lightHeroNav && !compact && !forceCompact ? " nav-wrap--light-surface" : ""}`.trim()}
     >
       <nav
         className={`nav${menuOpen ? " nav--menu-open" : ""}`.trim()}

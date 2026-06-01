@@ -872,6 +872,79 @@
   box-shadow: 0 0 0 2px rgba(30, 84, 224, 0.12);
 }
 
+/* Blog / Contact — transparent nav at top with readable dark labels */
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-links-rail > a {
+  color: var(--text-2);
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-links-rail > a:hover {
+  color: var(--ink-1);
+  background: rgba(30, 84, 224, 0.06);
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-links-rail > a.active {
+  color: var(--ink-1);
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(20, 49, 110, 0.08),
+    0 6px 18px -10px rgba(20, 49, 110, 0.14),
+    inset 0 1px 0 #fff;
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-dropdown-trigger {
+  color: var(--text-2);
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-dropdown-trigger:hover,
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-dropdown-wrap:hover .nav-dropdown-trigger,
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-dropdown-wrap:focus-within .nav-dropdown-trigger {
+  color: var(--blue);
+  background: rgba(30, 84, 224, 0.06);
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-dropdown-trigger.active {
+  color: var(--ink-1);
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(20, 49, 110, 0.08),
+    0 6px 18px -10px rgba(20, 49, 110, 0.14),
+    inset 0 1px 0 #fff;
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-dropdown-chev {
+  color: var(--blue);
+  background: rgba(30, 84, 224, 0.08);
+  border-color: rgba(30, 84, 224, 0.12);
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-links-rail {
+  border-color: rgba(20, 49, 110, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 12px 40px -24px rgba(20, 49, 110, 0.18);
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-menu-toggle {
+  border-color: rgba(20, 49, 110, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink-1);
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-cta {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 55%, #f1f5f9 100%);
+  color: var(--ink-1);
+  border: 1px solid rgba(20, 49, 110, 0.1);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 6px 20px -10px rgba(20, 49, 110, 0.12);
+}
+
+.austro .nav-wrap.nav-wrap--light-surface:not(.nav-wrap--compact) .nav-cta .dot {
+  background: var(--blue);
+  box-shadow: 0 0 0 2px rgba(30, 84, 224, 0.1);
+}
+
 .austro .nav-wrap--compact .nav-dropdown-trigger {
   color: var(--text-2);
 }
