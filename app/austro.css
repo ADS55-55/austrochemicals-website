@@ -616,7 +616,8 @@
   top: calc(100% + 6px);
   min-width: min(360px, calc(100vw - 40px));
   max-height: min(72vh, 560px);
-  overflow: visible;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: #fff;
   border: 1px solid rgba(20, 49, 110, 0.1);
   border-radius: 14px;
@@ -4892,6 +4893,74 @@
     padding-bottom: 76px;
   }
 
+  /* About page — tighten spacing/typography for phones */
+  .austro .hero.hero--full-video.hero--about-video {
+    padding-top: calc(var(--hero-nav-overlap) + 44px);
+    padding-bottom: 44px;
+  }
+
+  .austro .hero.hero--about-video .hero-main--center {
+    gap: 12px;
+  }
+
+  .austro .about-leadership.canvas,
+  .austro .about-story-section.canvas {
+    padding-top: 62px;
+    padding-bottom: 62px;
+  }
+
+  .austro .about-md-panel {
+    gap: 20px;
+  }
+
+  .austro .about-md-portrait {
+    min-height: clamp(340px, 96vw, 430px);
+  }
+
+  .austro .about-md-copy p {
+    margin-top: 16px;
+    font-size: 14.5px;
+    line-height: 1.62;
+  }
+
+  .austro .about-md-copy .about-md-kicker {
+    font-size: clamp(17px, 5.1vw, 20px);
+    line-height: 1.45;
+  }
+
+  .austro .about-md-quote {
+    margin-top: 22px;
+    padding: 18px 16px;
+    font-size: clamp(19px, 6vw, 24px);
+    line-height: 1.28;
+  }
+
+  .austro .about-md-metrics {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .austro .about-md-metrics div {
+    padding: 14px 14px 15px;
+    border-radius: 14px;
+  }
+
+  .austro .about-story-grid {
+    margin-top: 24px;
+    gap: 12px;
+  }
+
+  .austro .about-story-card h3 {
+    margin-top: 16px;
+    font-size: clamp(24px, 8vw, 32px);
+  }
+
+  .austro .about-story-card p {
+    margin-top: 12px;
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
   .austro .industry-subprocess-card h4 {
     font-size: clamp(20px, 7vw, 28px);
   }
@@ -4899,5 +4968,15 @@
   .austro .industry-subprocess-card p {
     font-size: 14.5px;
     line-height: 1.62;
+  }
+
+  /* Global phone safety — prevent text overflow on narrow screens */
+  .austro h1.display,
+  .austro .section-title,
+  .austro .service-detail__hero-service,
+  .austro .service-detail__hero-service--product,
+  .austro .industry-process-card h2 {
+    overflow-wrap: anywhere;
+    word-break: normal;
   }
 }

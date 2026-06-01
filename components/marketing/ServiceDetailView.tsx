@@ -71,6 +71,7 @@ export function ServiceDetailView({ data }: { data: ServiceDetailContent }) {
 
           <DetailSplitBand
             galleryLabel="Project imagery"
+            layout="stacked"
             figures={data.figures}
             lead={
               <div className="service-detail__lead-card">
